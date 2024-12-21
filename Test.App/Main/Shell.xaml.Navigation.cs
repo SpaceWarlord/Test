@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Test.App.Views.ClientViews;
 
 namespace Test.App.Main
 {
@@ -14,7 +15,7 @@ namespace Test.App.Main
     {
         private void NavigationView_Loaded(object sender, RoutedEventArgs e)
         {
-            SetCurrentNavigationViewItem(GetNavigationViewItems(typeof(HomePage)).First());            
+            SetCurrentNavigationViewItem(GetNavigationViewItems(typeof(ClientPage)).First());            
         }
 
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

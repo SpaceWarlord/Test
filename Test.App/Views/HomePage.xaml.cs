@@ -28,7 +28,7 @@ namespace Test.App.Views
         public HomePage()
         {
             this.InitializeComponent();
-            welcomeBox.Text = "Hello Fred";
+            welcomeBox.Text = "Hello";
         }
     }
 }

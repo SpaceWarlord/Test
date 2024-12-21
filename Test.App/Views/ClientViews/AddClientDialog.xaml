@@ -95,7 +95,7 @@
             Text="Gender Preference" />
         <RadioButtons
             x:Name="genderPreference"
-            Grid.Row="3"
+            Grid.Row="5"
             Grid.Column="1">
             <RadioButton
                 Content="None"
