@@ -42,8 +42,9 @@ namespace Test.App.ViewModels
             {
                 if (value != _IsModified)
                 {
+                    Debug.WriteLine("Was modified");
                     _IsModified = value;
-                    OnPropertyChanged();
+                    //OnPropertyChanged();
                     /*
                     // Only record changes after the order has loaded. 
                     if (IsLoaded)
@@ -59,13 +60,14 @@ namespace Test.App.ViewModels
 
         bool _isNew = true;
         /// <summary>
-        /// Gets or sets a value that indicates whether this is a new customer.
+        /// Gets or sets a value that indicates whether this is a new object.
         /// </summary>
         public bool IsNew
         {
             get => _isNew;
             set
             {
+                Debug.WriteLine("is new");
                 _isNew = value;
                 OnPropertyChanged();
             }

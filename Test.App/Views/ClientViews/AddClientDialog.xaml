@@ -30,8 +30,18 @@
         </Grid.RowDefinitions>
 
         <TextBox
-            x:Name="FirstNameTextBox"
+            x:Name="TestTextBox"
             Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Header="Test Box"
+            IsColorFontEnabled="True"
+            PlaceholderForeground="Gray"
+            PlaceholderText="Enter Test String"
+            Text="{x:Bind ClientPageVM.NewClient.TestText, Mode=TwoWay}" />
+        <TextBox
+            x:Name="FirstNameTextBox"
+            Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Header="First Name"
@@ -41,17 +51,17 @@
             Text="{x:Bind ClientPageVM.NewClient.FirstName, Mode=TwoWay}" />
         <TextBox
             x:Name="LastNameTextBox"
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Header="Last Name"
             IsColorFontEnabled="True"
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Last Name"
-            Text="{x:Bind ClientPageVM.NewClient.LastName, Mode=OneWay}" />
+            Text="{x:Bind ClientPageVM.NewClient.LastName, Mode=TwoWay}" />
         <TextBox
             x:Name="NicknameTextBox"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Header="Nickname"
@@ -80,7 +90,7 @@
         </RadioButtons>
 
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="5"
             Grid.Column="0"
             Text="Gender Preference" />
         <RadioButtons

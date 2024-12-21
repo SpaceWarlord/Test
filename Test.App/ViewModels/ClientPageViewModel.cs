@@ -22,6 +22,7 @@ namespace Test.App.ViewModels
         public ClientPageViewModel()
         { 
             Debug.WriteLine("-- ClientPageViewModel Constructor--");
+            Clients = new ObservableCollection<ClientViewModel>();
             NewClient = new ClientViewModel("", "", "", "", "", "", "", "", null, 0, "");
         }
 
@@ -72,40 +73,6 @@ namespace Test.App.ViewModels
                 }
                 IsLoading = false;
             });
-        }
-
-        [RelayCommand]
-        public void AddClientOld(ClientViewModel client)
-        {
-            Debug.WriteLine("Called Add Client");
-            Debug.WriteLine("name is " + client.FullName);
-            if (client != null)
-            {
-                ClientViewModel c = new ClientViewModel(client.FirstName, client.LastName, client.Nickname, client.Gender, client.DOB, client.Phone, client.Email, client.HighlightColor, client.Address, client.RiskCategory, client.GenderPreference);
-                /*
-                ClientViewModel c = new ClientViewModel()
-                {
-                    FirstName = client.FirstName,
-                    LastName = client.LastName,
-                    FullName = client.FullName,
-                    Nickname = client.Nickname,
-                    Gender = client.Gender,
-                    DOB = client.DOB,
-                    GenderPreference = client.GenderPreference,
-                    Email = client.Email,
-                    Phone = client.Phone,
-                    HighlightColor = client.HighlightColor,
-                };
-                */
-                Clients.Add(c);
-                //i.Name = string.Empty;
-                //i.RemoveErrors();
-
-            }
-            else
-            {
-                Debug.WriteLine("Error: Client was null");
-            }
-        }
+        }        
     }
 }

@@ -18,7 +18,24 @@ using Microsoft.Extensions.Logging.Abstractions;
 namespace Test.App.ViewModels
 {
     public partial class ClientViewModel: PersonViewModel
-    {        
+    {
+
+        private string _testText="";
+        public string TestText
+        {
+            get => _testText;
+            set
+            {
+                if (value != _testText)
+                {
+                    _testText = value;
+                    IsModified = true;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         /// <summary>
         /// Gets or sets the client's risk category.
         /// </summary>

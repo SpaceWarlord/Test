@@ -45,8 +45,8 @@ namespace Test.App.ViewModels
             set
             {
                 if (value != _model.FirstName)
-                {
-                    Debug.WriteLine("name set to: " + value);
+                {                    
+                    Debug.WriteLine("first name new val is " + value + " old is " + _model.LastName);
                     _model.FirstName = value;
                     IsModified = true;
                     OnPropertyChanged();
@@ -62,9 +62,10 @@ namespace Test.App.ViewModels
         {
             get => _model.LastName;
             set
-            {
+            {                
                 if (value != _model.LastName)
                 {
+                    Debug.WriteLine("last name set to: " + value);
                     _model.LastName = value;
                     IsModified = true;
                     OnPropertyChanged();
