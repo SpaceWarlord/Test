@@ -26,7 +26,7 @@ namespace Test.App
         //public DbSet<RecipeUsage> RecipeUsage { get; set; }
 
         
-
+        public DbSet<Player> Players { get; set; }
         public DbSet<Client> Clients { get; set; }
         
         public DbSet<Address> Addresses { get; set; }

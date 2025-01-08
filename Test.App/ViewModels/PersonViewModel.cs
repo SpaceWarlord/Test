@@ -21,6 +21,7 @@ namespace Test.App.ViewModels
         /// <summary>
         /// Gets or sets the person's ID.
         /// </summary>
+        /// 
         public int Id
         {
             get => _model.Id;

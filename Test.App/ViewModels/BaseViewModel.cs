@@ -91,7 +91,7 @@ namespace Test.App.ViewModels
             Debug.WriteLine("Errors is " + Errors);
             if (e.PropertyName != nameof(HasErrors))
             {
-                OnPropertyChanged(nameof(HasErrors)); // Update HasErrors on every change, so I can bind to it.
+                OnPropertyChanged(nameof(HasErrors)); // Update HasErrors on every change.
             }
         }
 
