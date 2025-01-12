@@ -20,26 +20,6 @@ namespace Test.App.Helpers
             LastName = x.LastName,
             Gender = x.Gender,
         })];
-        }
-        public static List<PlayerScoreDto> ToPlayerScoreDto(this List<Player> source)
-        {
-            return [.. source.Select(x => new PlayerScoreDto
-        {
-            Id = x.Id,
-            Name = x.Name,
-            Score = x.Score
-        })];
-        }
-
-        public static List<PlayerScoreViewModel> ToPlayerScoreViewModel(this List<PlayerScoreDto> source)
-        {
-            return [.. source.Select(x => new PlayerScoreViewModel(null)
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Score = x.Score
-            })];
-        }
-
+        }              
     }
 }
