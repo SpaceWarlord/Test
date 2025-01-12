@@ -38,7 +38,7 @@
                     </NavigationViewItem>
                     <NavigationViewItem
                         Content="Clients"
-                        Tag="{x:Bind x:String.Format('{0}ClientViews.ClientPage', pagePath)}"
+                        Tag="{x:Bind x:String.Format('{0}Client.ClientPage', pagePath)}"
                         ToolTipService.ToolTip="Clients">
                         <NavigationViewItem.Icon>
                             <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Galaxy.png" />

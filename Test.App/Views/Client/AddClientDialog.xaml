@@ -3,13 +3,11 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="using:Test.App.Views.ClientViews"
+    xmlns:local="using:Test.App.Views.Client"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
-    <ContentDialog.Resources>
-        <local:GenderConverter x:Key="genderConverterKey" />
-    </ContentDialog.Resources>
+    <ContentDialog.Resources />
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -82,11 +80,11 @@
             <RadioButton
                 Content="M"
                 GroupName="gender"
-                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay, Converter={StaticResource ResourceKey=genderConverterKey}, ConverterParameter=M}" />
+                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay}" />
             <RadioButton
                 Content="F"
                 GroupName="gender"
-                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay, Converter={StaticResource ResourceKey=genderConverterKey}, ConverterParameter=F}" />
+                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay}" />
         </RadioButtons>
 
         <TextBlock

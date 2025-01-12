@@ -19,11 +19,11 @@ namespace Test.App.Services
             _db = db;
         }
 
+        
         public async Task<List<ClientDTO>> GetAll()
-        {
-            
-            return await _db.Clients.Select(x => x.ToClientDTO()).ToListAsync();
+        {            
+            return await _db.Clients.Select(x => x.ToClientDTO()).ToListAsync();            
         }
-
+        
     }
 }

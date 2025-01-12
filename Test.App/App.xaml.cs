@@ -23,6 +23,9 @@ using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Microsoft.Extensions.DependencyInjection;
+using Test.App.Views.Client;
+using Test.App.ViewModels;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -50,6 +53,7 @@ namespace Test.App
         /// </summary>
         public static ITestRepository Repository { get; private set; }
 
+        public IServiceProvider Services { get; }
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -57,7 +61,23 @@ namespace Test.App
         /// </summary>
         public App()
         {
+            Services = ConfigureServices();
             this.InitializeComponent();
+        }
+
+        private static IServiceProvider ConfigureServices()
+        {
+            var services = new ServiceCollection();
+            //services.AddSingleton<IThemeService, ThemeService>();
+            //services.AddSingleton<IJsonNavigationService, JsonNavigationService>();
+
+            //services.AddTransient<MainViewModel>();
+            services.AddSingleton<ClientPage>(serviceProvider => new ClientPage()
+            {
+                DataContext = serviceProvider.GetRequiredService<ClientViewModel>()
+            });
+
+            return services.BuildServiceProvider();
         }
 
         /// <summary>

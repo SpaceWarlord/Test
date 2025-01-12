@@ -22,7 +22,7 @@ namespace Test.App.ViewModels
         public async Task OnLoad()
         {
             var data = await _playerService.GetAll();
-            Scores = new ObservableCollection<PlayerScoreViewModel>(data.Select(x => x.ToPlayerScoreViewModel()));
+            //6Scores = new ObservableCollection<PlayerScoreViewModel>(data.Select(x => x.ToPlayerScoreViewModel()));
         }
 
     }
