@@ -26,6 +26,23 @@ namespace Test.App.Services
             return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Gender)).ToListAsync();
             //List<Client> clientList = await _db.Clients.ToListAsync();
             //return await clientList.ToClientDTO();
-        }        
+        }
+
+        public async Task<bool> Update(ClientDTO client)
+        {
+            var found = _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
+            if (found.Result is null)
+            {
+                return false;
+            }
+            else
+            {
+                Client c = found.Result as Client;                
+                c.FirstName = client.FirstName;
+                c.LastName = client.LastName;                
+                _db.SaveChanges();
+                return true;
+            }            
+        }
     }
 }
