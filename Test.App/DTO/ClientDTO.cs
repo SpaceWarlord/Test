@@ -9,13 +9,13 @@ namespace Test.App.DTO
 {
     public class ClientDTO
     {
-        public required int Id { get; set; }
-        public required string FirstName { get; set; }
-        public required string LastName { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         //public required string Nickname { get; set; }
-        public required string Gender {  get; set; }
+        public string Gender {  get; set; }
 
-        [SetsRequiredMembers]
+        //[SetsRequiredMembers]
         public ClientDTO(int id, string firstName, string lastName, string gender)
         {
             Id = id;

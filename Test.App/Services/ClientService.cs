@@ -30,6 +30,14 @@ namespace Test.App.Services
 
         public async Task<bool> Update(ClientDTO client)
         {
+            var found = await _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
+            if (found is null) return false;
+            found.FirstName = client.FirstName;
+            found.LastName = client.LastName;
+            found.Gender = client.Gender;            
+            await _db.SaveChangesAsync();
+            return true;
+            /*
             var found = _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
             if (found.Result is null)
             {
@@ -42,7 +50,7 @@ namespace Test.App.Services
                 c.LastName = client.LastName;                
                 _db.SaveChanges();
                 return true;
-            }            
+            } */
         }
     }
 }
