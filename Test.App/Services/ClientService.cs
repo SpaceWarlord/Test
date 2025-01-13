@@ -23,9 +23,9 @@ namespace Test.App.Services
         public async Task<List<ClientDTO>> GetAll()
         {
             //return await _db.Clients.Select(x => x.ToClientDTO()).ToListAsync();
-            List<Client> clientList = await _db.Clients.ToListAsync();
-            return await clientList.ToClientDTO();
-        }
-        
+            return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Gender)).ToListAsync();
+            //List<Client> clientList = await _db.Clients.ToListAsync();
+            //return await clientList.ToClientDTO();
+        }        
     }
 }

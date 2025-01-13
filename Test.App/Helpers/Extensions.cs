@@ -11,6 +11,7 @@ namespace Test.App.Helpers
 {
     public static class Extensions
     {
+        /*
         public static List<ClientDTO> ToClientDTO(this List<Client> source)
         {
             return [.. source.Select(x => new ClientDTO
@@ -20,6 +21,7 @@ namespace Test.App.Helpers
             LastName = x.LastName,
             Gender = x.Gender,
         })];
-        }              
+        } 
+        */
     }
 }
