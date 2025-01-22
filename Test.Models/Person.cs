@@ -15,7 +15,7 @@ namespace Test.Models
     [Index(nameof(Nickname), IsUnique = true)]
     public class Person: IEquatable<Person>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         
         public string FirstName { get; set; }
         

@@ -17,17 +17,11 @@ using EntityFramework.Exceptions.Sqlite;
 namespace Test.App
 {
     public class TestDBContext : DbContext
-    {
-        //public DbSet<Equipment> Equipment { get; set; }
-        //public DbSet<Ingredient> Ingredient { get; set; }
-        //public DbSet<IngredientCategory> IngredientCategory { get; set; }
-        //public DbSet<IngredientQuantity> IngredientQuantity { get; set; }
-        //public DbSet<Recipe> Recipes { get; set; }
-        //public DbSet<RecipeUsage> RecipeUsage { get; set; }
-
-        
+    {                
         public DbSet<Player> Players { get; set; }
         public DbSet<Client> Clients { get; set; }
+
+        public DbSet<TestModel> Tests { get; set; }
         
         public DbSet<Address> Addresses { get; set; }
         
@@ -36,12 +30,14 @@ namespace Test.App
        
         public TestDBContext()
         {
+            //Database.EnsureDeleted();
             Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {            
+        {
+            Debug.WriteLine("OnConfiguring Called");
             optionsBuilder.UseExceptionProcessor();            
-            optionsBuilder.UseSqlite("Data Source=database27.db");
+            optionsBuilder.UseSqlite("Data Source=database.db");
             optionsBuilder.EnableSensitiveDataLogging(true);                       
         }
 

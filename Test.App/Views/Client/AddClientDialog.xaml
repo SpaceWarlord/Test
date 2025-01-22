@@ -28,16 +28,6 @@
         </Grid.RowDefinitions>
 
         <TextBox
-            x:Name="TestTextBox"
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Header="Test Box"
-            IsColorFontEnabled="True"
-            PlaceholderForeground="Gray"
-            PlaceholderText="Enter Test String"
-            Text="{x:Bind ClientPageVM.NewClient.TestText, Mode=TwoWay}" />
-        <TextBox
             x:Name="FirstNameTextBox"
             Grid.Row="1"
             Grid.Column="0"
@@ -47,6 +37,7 @@
             PlaceholderForeground="Gray"
             PlaceholderText="Enter First Name"
             Text="{x:Bind ClientPageVM.NewClient.FirstName, Mode=TwoWay}" />
+
         <TextBox
             x:Name="LastNameTextBox"
             Grid.Row="2"
@@ -66,8 +57,24 @@
             IsColorFontEnabled="True"
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Nickname"
-            Text="{x:Bind ClientPageVM.NewClient.Nickname, Mode=OneWay}" />
+            Text="{x:Bind ClientPageVM.NewClient.Nickname, Mode=TwoWay}" />
 
+        <StackPanel
+            Grid.Row="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,50,0,0"
+            Orientation="Vertical"
+            Visibility="{x:Bind ClientPageVM.NewClient.HasErrors, Mode=OneWay}">
+            <TextBlock FontSize="20">Errors:</TextBlock>
+            <Border Background="Gray">
+                <TextBlock
+                    x:Name="ErrorsBox"
+                    Foreground="White"
+                    Text="{x:Bind ClientPageVM.NewClient.Errors, Mode=OneWay}" />
+            </Border>
+        </StackPanel>
+        <!--
         <TextBlock
             Grid.Row="4"
             Grid.Column="0"
@@ -80,11 +87,11 @@
             <RadioButton
                 Content="M"
                 GroupName="gender"
-                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay}" />
+                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=TwoWay}" />
             <RadioButton
                 Content="F"
                 GroupName="gender"
-                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=OneWay}" />
+                IsChecked="{x:Bind ClientPageVM.NewClient.Gender, Mode=TwoWay}" />
         </RadioButtons>
 
         <TextBlock
@@ -102,6 +109,7 @@
             <RadioButton Content="Male" GroupName="genderPreference" />
             <RadioButton Content="Female" GroupName="genderPreference" />
         </RadioButtons>
+
         <StackPanel
             Grid.Row="6"
             Grid.Column="0"
@@ -116,6 +124,6 @@
                     Foreground="White"
                     Text="{x:Bind ClientPageVM.NewClient.Errors, Mode=OneWay}" />
             </Border>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </ContentDialog>

@@ -28,14 +28,14 @@ namespace Test.Repository.Sql
                 .ToListAsync();
         }
 
-        public async Task<Client> GetAsync(int id)
+        public async Task<Client> GetAsync(string id)
         {
             return await _db.Clients
                 .AsNoTracking()
                 .FirstOrDefaultAsync(client => client.Id == id);
         }
 
-        public async Task<IEnumerable<Client>> GetAsync(string value)
+        public async Task<IEnumerable<Client>> GetAsyncNameSearch(string value)
         {
             string[] parameters = value.Split(' ');
             return await _db.Clients
@@ -66,7 +66,7 @@ namespace Test.Repository.Sql
             return client;
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(string id)
         {
             var client = await _db.Clients.FirstOrDefaultAsync(_client => _client.Id == id);
             if (null != client)

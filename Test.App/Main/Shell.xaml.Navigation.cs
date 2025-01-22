@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Test.App.Views.Client;
+using System.Diagnostics;
 
 namespace Test.App.Main
 {
@@ -60,7 +61,7 @@ namespace Test.App.Main
             {
                 return;
             }
-
+            //ContentFrame.Navigate(Type.GetType(ValueFromTag(item.Tag.ToString())), Type.GetType(ValueFromTag(item.Tag.ToString(), true)));
             ContentFrame.Navigate(Type.GetType(item.Tag.ToString()), item.Content);
             NavigationView.Header = item.Content;
             NavigationView.SelectedItem = item;
@@ -74,6 +75,25 @@ namespace Test.App.Main
         void OnNavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
+        }
+
+        public string ValueFromTag(string tag, bool service=false)
+        {
+            Debug.WriteLine("--Value from tag--");
+            Debug.WriteLine("Tag: " + tag + " service: " + service);
+            if (tag.Contains("|"))
+            {
+                Debug.WriteLine("Contains |");
+                if (service)
+                {
+                    Debug.WriteLine("Service found: " + tag.Split('|')[1]);
+                    return tag.Split('|')[1];
+                }
+                Debug.WriteLine("No service found: " + tag.Split('|')[0]);
+                return tag.Split('|')[0];
+            }
+            Debug.WriteLine("| Not found " + tag);
+            return tag;            
         }
     }
 }

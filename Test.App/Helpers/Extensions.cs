@@ -11,11 +11,18 @@ namespace Test.App.Helpers
 {
     public static class Extensions
     {
-        
-        
+        /*
         public static List<ClientDTO> ToClientDTO(this List<Client> source)
         {
-            return [.. source.Select(x => new ClientDTO
+            return [.. source.Select(x => new ClientDTO(x.Id, x.FirstName, x.LastName, x.Nickname, x.Gender))];
+        }
+        */
+
+        /*
+         * Using Empty Constructor
+        public static List<ClientDTO> ToClientDTO(this List<Client> source)
+        {
+            return [.. source.Select(x => new ClientDTO()
         {
             Id = x.Id,
             FirstName = x.FirstName,
@@ -23,6 +30,6 @@ namespace Test.App.Helpers
             Gender = x.Gender,
         })];
         } 
-        
+        */
     }
 }

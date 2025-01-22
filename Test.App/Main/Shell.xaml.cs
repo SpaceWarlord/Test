@@ -27,6 +27,7 @@ namespace Test.App.Main
     public sealed partial class Shell : Window, INavigation
     {        
         public string pagePath = "Test.App.Views.";
+        //public string servicePath = "Test.App.Services.";
         public Shell()
         {            
             InitializeComponent();

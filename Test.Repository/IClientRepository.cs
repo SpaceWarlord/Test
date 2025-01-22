@@ -20,12 +20,12 @@ namespace Test.Repository
         /// <summary>
         /// Returns all customers with a data field matching the start of the given string. 
         /// </summary>
-        Task<IEnumerable<Client>> GetAsync(string search);
+        Task<IEnumerable<Client>> GetAsyncNameSearch(string search);
 
         /// <summary>
         /// Returns the customer with the given id. 
         /// </summary>
-        Task<Client> GetAsync(int id);
+        Task<Client> GetAsync(string id);
 
         /// <summary>
         /// Adds a new customer if the customer does not exist, updates the 
@@ -36,6 +36,6 @@ namespace Test.Repository
         /// <summary>
         /// Deletes a customer.
         /// </summary>
-        Task DeleteAsync(int clientId);
+        Task DeleteAsync(string clientId);
     }
 }

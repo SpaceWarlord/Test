@@ -14,10 +14,8 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using Microsoft.UI.Xaml.Shapes;
-using Test.Repository.Sql;
 using Test.App.Main;
 using Test.Models;
-using Test.Repository;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -26,6 +24,7 @@ using Windows.Storage;
 using Microsoft.Extensions.DependencyInjection;
 using Test.App.Views.Client;
 using Test.App.ViewModels;
+using Test.App.Services;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -51,7 +50,7 @@ namespace Test.App
         /// <summary>
         /// Pipeline for interacting with backend service or database.
         /// </summary>
-        public static ITestRepository Repository { get; private set; }
+        //public static ITestRepository Repository { get; private set; }
 
         public IServiceProvider Services { get; }
 
@@ -60,7 +59,7 @@ namespace Test.App
         /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
-        {
+        {            
             Services = ConfigureServices();
             this.InitializeComponent();
         }
@@ -72,11 +71,18 @@ namespace Test.App
             //services.AddSingleton<IJsonNavigationService, JsonNavigationService>();
 
             //services.AddTransient<MainViewModel>();
+            /*
+            services.AddSingleton<ClientPage>(serviceProvider => new ClientPage(new ClientService())
+            {
+                DataContext = serviceProvider.GetRequiredService<ClientViewModel>()                
+            });
+            */
+
             services.AddSingleton<ClientPage>(serviceProvider => new ClientPage()
             {
                 DataContext = serviceProvider.GetRequiredService<ClientViewModel>()
             });
-
+            //services.AddSingleton<ClientService>();
             return services.BuildServiceProvider();
         }
 
@@ -107,8 +113,8 @@ namespace Test.App
         /// </summary>
         public static void UseSqlite()
         {
-            string demoDatabasePath = Package.Current.InstalledLocation.Path + @"\Data\Roster.db";
-            string databasePath = ApplicationData.Current.LocalFolder.Path + @"\Roster.db";
+            string demoDatabasePath = Package.Current.InstalledLocation.Path + @"\Data\Roster1.db";
+            string databasePath = ApplicationData.Current.LocalFolder.Path + @"\Roster1.db";
 
 
             if (!File.Exists(databasePath))
@@ -116,8 +122,8 @@ namespace Test.App
                 //File.Copy(demoDatabasePath, databasePath);
             }
             //var dbOptions = new DbContextOptionsBuilder<RosterContext>().UseSqlite("Data Source=" + databasePath);
-            var dbOptions = new DbContextOptionsBuilder<TestContext>().UseSqlite("Data Source=" + "database27.db");
-            Repository = new SqlTestRepository(dbOptions);
+            var dbOptions = new DbContextOptionsBuilder<TestDBContext>().UseSqlite("Data Source=" + "database.db");
+            //Repository = new SqlTestRepository(dbOptions);
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using EntityFramework.Exceptions.Sqlite;
 using System.Reflection.Emit;
 using Test.Repository.Sql.Configurations;
+using System.Diagnostics;
 
 namespace Test.Repository.Sql
 {
@@ -33,6 +34,11 @@ namespace Test.Repository.Sql
         public DbSet<Client> Clients { get; set; }
 
         /// <summary>
+        /// Gets the tests DbSet.
+        /// </summary>
+        public DbSet<TestModel> Tests { get; set; }
+
+        /// <summary>
         /// Gets the suburbs DbSet.
         /// </summary>
         public DbSet<Suburb> Suburbs { get; set; }
@@ -41,7 +47,7 @@ namespace Test.Repository.Sql
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-
+            Debug.WriteLine("OnConfiguring Called");
             optionsBuilder.UseExceptionProcessor();            
             optionsBuilder.UseSqlite("Data Source=database.db");
             optionsBuilder.EnableSensitiveDataLogging(true);            
@@ -59,6 +65,7 @@ namespace Test.Repository.Sql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Debug.WriteLine("OnModelCreating Called");
             modelBuilder.SetupContext(this.Database.IsSqlite()); // Identify if we are using a SQLite database            
             /*
             //https://learn.microsoft.com/en-us/ef/core/modeling/inheritance
@@ -95,6 +102,7 @@ namespace Test.Repository.Sql
 
             if (Database.ProviderName == "Microsoft.EntityFrameworkCore.Sqlite")
             {
+                Debug.WriteLine("USING SQLITE");
                 //https://blog.dangl.me/archive/handling-datetimeoffset-in-sqlite-with-entity-framework-core/
                 // SQLite does not have proper support for DateTimeOffset via Entity Framework Core, see the limitations
                 // here: https://docs.microsoft.com/en-us/ef/core/providers/sqlite/limitations#query-limitations

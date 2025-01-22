@@ -5,27 +5,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Test.App.DTO;
-using Test.Repository.Sql;
 using Test.Models;
+using System.Diagnostics;
 
 namespace Test.App.Services
 {
     public class ClientService
     {
-        //private readonly SqlTestRepository _db;
         private readonly TestDBContext _db;
+        /*
         public ClientService(TestDBContext db)
         {
             _db = db;
         }
-
-        
+        */
+        public ClientService()
+        {
+            _db = new TestDBContext();
+        }
         public async Task<List<ClientDTO>> GetAll()
         {
-            //return await _db.Clients.Select(x => x.ToClientDTO()).ToListAsync();
-            return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Gender)).ToListAsync();
-            //List<Client> clientList = await _db.Clients.ToListAsync();
-            //return await clientList.ToClientDTO();
+            return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Nickname, c.Gender, c.DOB, c.Phone, c.Email, c.HighlightColor, c.Address, c.RiskCategory, c.GenderPreference)).ToListAsync();            
         }
 
         public async Task<bool> Update(ClientDTO client)
@@ -34,23 +34,39 @@ namespace Test.App.Services
             if (found is null) return false;
             found.FirstName = client.FirstName;
             found.LastName = client.LastName;
-            found.Gender = client.Gender;            
+            found.Gender = client.Gender;
             await _db.SaveChangesAsync();
             return true;
-            /*
-            var found = _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
-            if (found.Result is null)
+        }
+
+        public async Task<bool> Add(ClientDTO client)
+        {
+            var found = await _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
+            if (found is not null)
             {
+                Debug.WriteLine("Client already exists with Id: " + client.Id);
                 return false;
             }
-            else
+            var c = new Client()
             {
-                Client c = found.Result as Client;                
-                c.FirstName = client.FirstName;
-                c.LastName = client.LastName;                
-                _db.SaveChanges();
-                return true;
-            } */
-        }
+                Id = client.Id,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                Nickname = client.Nickname,
+                Gender = client.Gender,
+                DOB = client.Dob,
+                Phone = client.Phone,
+                Email = client.Email,
+                HighlightColor = client.HighlightColor,
+                Address = client.Address,
+                RiskCategory = client.RiskCategory,
+                GenderPreference = client.genderPreference
+            };
+            _db.Clients.Add(c);
+
+            //if more then 0 something was added to database
+            //https://learn.microsoft.com/en-us/dotnet/api/microsoft.entityframeworkcore.dbcontext.savechangesasync?view=efcore-9.0
+            return (await _db.SaveChangesAsync()) > 0;                        
+        }       
     }
 }

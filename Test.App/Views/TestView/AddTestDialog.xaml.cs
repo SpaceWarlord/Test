@@ -19,19 +19,19 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Test.App.Views.Client
+namespace Test.App.Views.TestView
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddClientDialog : ContentDialog
+    public sealed partial class AddTestDialog : ContentDialog
     {
-        public ClientPageViewModel ClientPageVM { get; set;}
-        public AddClientDialog(ClientPageViewModel clientPageVM)
+        public TestPageViewModel TestPageVM { get; set;}
+        public AddTestDialog(TestPageViewModel testPageVM)
         {
             this.InitializeComponent();
 
-            ClientPageVM = clientPageVM;
+            TestPageVM = testPageVM;
             Debug.WriteLine("HOLAAA");
             //ClientVM = new ClientViewModel("", "", "", "", "", "", "", "", null, 0, "");
             /*
@@ -52,20 +52,5 @@ namespace Test.App.Views.Client
                 Debug.WriteLine("Gender set to: " + radioButton.Content);
             }*/
         }
-    }
-
-    /*
-    public class GenderConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return ((string)parameter == (string)value);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
-            return (bool)value ? parameter : null;
-        }
-    }
-    */
+    }    
 }

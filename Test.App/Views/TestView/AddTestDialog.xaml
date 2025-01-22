@@ -1,0 +1,64 @@
+<ContentDialog
+    x:Class="Test.App.Views.TestView.AddTestDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:Test.App.Views.TestView"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+    <ContentDialog.Resources />
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <TextBox
+            x:Name="FirstNameTextBox"
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Header="First Name"
+            IsColorFontEnabled="True"
+            PlaceholderForeground="Gray"
+            PlaceholderText="Enter First Name"
+            Text="{x:Bind TestPageVM.NewTest.FirstName, Mode=TwoWay}" />
+
+
+        <TextBox
+            x:Name="LastNameTextBox"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Header="Last Name"
+            IsColorFontEnabled="True"
+            PlaceholderForeground="Gray"
+            PlaceholderText="Enter Last Name"
+            Text="{x:Bind TestPageVM.NewTest.LastName, Mode=TwoWay}" />
+        <TextBox
+            x:Name="NicknameTextBox"
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Header="Nickname"
+            IsColorFontEnabled="True"
+            PlaceholderForeground="Gray"
+            PlaceholderText="Enter Nickname"
+            Text="{x:Bind TestPageVM.NewTest.Nickname, Mode=TwoWay}" />
+    </Grid>
+</ContentDialog>

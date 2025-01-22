@@ -26,7 +26,6 @@
                 IsSettingsVisible="False"
                 Loaded="NavigationView_Loaded"
                 SelectionChanged="NavigationView_SelectionChanged">
-
                 <NavigationView.MenuItems>
                     <NavigationViewItem
                         Content="Home"
@@ -36,10 +35,28 @@
                             <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Galaxy.png" />
                         </NavigationViewItem.Icon>
                     </NavigationViewItem>
+                    <!--
+                    <NavigationViewItem
+                        Content="Clients"
+                        Tag="{x:Bind x:String.Format('{0}Client.ClientPage|{1}ClientService', pagePath, servicePath)}"
+                        ToolTipService.ToolTip="Clients">
+                        <NavigationViewItem.Icon>
+                            <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Galaxy.png" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    -->
                     <NavigationViewItem
                         Content="Clients"
                         Tag="{x:Bind x:String.Format('{0}Client.ClientPage', pagePath)}"
                         ToolTipService.ToolTip="Clients">
+                        <NavigationViewItem.Icon>
+                            <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Galaxy.png" />
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                    <NavigationViewItem
+                        Content="Tests"
+                        Tag="{x:Bind x:String.Format('{0}TestView.TestPage', pagePath)}"
+                        ToolTipService.ToolTip="Tests">
                         <NavigationViewItem.Icon>
                             <BitmapIcon ShowAsMonochrome="False" UriSource="/Assets/Galaxy.png" />
                         </NavigationViewItem.Icon>

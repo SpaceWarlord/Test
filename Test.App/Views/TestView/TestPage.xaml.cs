@@ -21,14 +21,14 @@ using System.Threading.Tasks;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace Test.App.Views.Client
+namespace Test.App.Views.TestView
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ClientPage : Page
+    public sealed partial class TestPage : Page
     {
-        public ClientPageViewModel ViewModel { get; set; }
+        public TestPageViewModel ViewModel { get; set; }
 
         /*
         private readonly ClientService _service;
@@ -40,15 +40,15 @@ namespace Test.App.Views.Client
         }
         */
 
-        public ClientPage()
+        public TestPage()
         {
             this.InitializeComponent();
-            ViewModel = new ClientPageViewModel();            
+            ViewModel = new TestPageViewModel();            
         }
         
         private async void ShowDialog_Click(object sender, RoutedEventArgs e)
         {
-            AddClientDialog dialog = new AddClientDialog(ViewModel);
+            AddTestDialog dialog = new AddTestDialog(ViewModel);
             // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
             dialog.XamlRoot = this.XamlRoot;
             dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
@@ -67,15 +67,13 @@ namespace Test.App.Views.Client
             {
                 Debug.WriteLine("Primary clicked");
                
-                if(ViewModel.NewClient!=null)
+                if(ViewModel.NewTest!=null)
                 {
-                    Debug.WriteLine("zzFirstName: " + ViewModel.NewClient.FirstName);
-                    Debug.WriteLine("Selected gender: " + ViewModel.NewClient.Gender);
-                    //Guid id = new Guid();
-                    ViewModel.NewClient.Id=Guid.NewGuid().ToString();
+                    Debug.WriteLine("zzFirstName: " + ViewModel.NewTest.FirstName);                                       
+                    ViewModel.NewTest.Id= Guid.NewGuid().ToString();
                     //ClientDTO clientDTO = new ClientDTO(new Guid().ToString(), ViewModel.NewClient.FirstName, ViewModel.NewClient.LastName, ViewModel.NewClient.Nickname, ViewModel.NewClient.Gender);
-                    bool dbResult =await ViewModel.NewClient.ClientService.Add(ViewModel.NewClient.ToDTO());
-                    Debug.WriteLine("Client added true/false: " + dbResult);
+                    bool dbResult =await ViewModel.NewTest.TestService.Add(ViewModel.NewTest.ToDTO());
+                    Debug.WriteLine("Test added true/false: " + dbResult);
                     await ViewModel.GetAll();
                     //ViewModel.NewClient.Service.Add("stuff");
                 }
@@ -93,7 +91,7 @@ namespace Test.App.Views.Client
         //public async Task GetAll()
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            await ViewModel.GetAll();
+            await ViewModel.GetAll();            
         }
     }
 }
