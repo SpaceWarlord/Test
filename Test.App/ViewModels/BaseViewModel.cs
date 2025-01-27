@@ -66,8 +66,7 @@ namespace Test.App.ViewModels
         {
             get => _isNew;
             set
-            {
-                Debug.WriteLine("is new");
+            {                
                 _isNew = value;
                 OnPropertyChanged();
             }

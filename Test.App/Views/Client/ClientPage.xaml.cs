@@ -28,17 +28,7 @@ namespace Test.App.Views.Client
     /// </summary>
     public sealed partial class ClientPage : Page
     {
-        public ClientPageViewModel ViewModel { get; set; }
-
-        /*
-        private readonly ClientService _service;
-        public ClientPage(ClientService Service)
-        {
-            this.InitializeComponent();
-            ViewModel = new ClientPageViewModel();            
-            _service = Service;
-        }
-        */
+        public ClientPageViewModel ViewModel { get; set; }        
 
         public ClientPage()
         {
@@ -69,15 +59,12 @@ namespace Test.App.Views.Client
                
                 if(ViewModel.NewClient!=null)
                 {
-                    Debug.WriteLine("zzFirstName: " + ViewModel.NewClient.FirstName);
-                    Debug.WriteLine("Selected gender: " + ViewModel.NewClient.Gender);
-                    //Guid id = new Guid();
-                    ViewModel.NewClient.Id=Guid.NewGuid().ToString();
-                    //ClientDTO clientDTO = new ClientDTO(new Guid().ToString(), ViewModel.NewClient.FirstName, ViewModel.NewClient.LastName, ViewModel.NewClient.Nickname, ViewModel.NewClient.Gender);
+                    Debug.WriteLine("FirstName: " + ViewModel.NewClient.FirstName);
+                    Debug.WriteLine("Selected gender: " + ViewModel.NewClient.Gender);                    
+                    ViewModel.NewClient.Id=Guid.NewGuid().ToString();                    
                     bool dbResult =await ViewModel.NewClient.ClientService.Add(ViewModel.NewClient.ToDTO());
                     Debug.WriteLine("Client added true/false: " + dbResult);
-                    await ViewModel.GetAll();
-                    //ViewModel.NewClient.Service.Add("stuff");
+                    await ViewModel.GetAll();                    
                 }
             }
             else if (result == ContentDialogResult.Secondary)
@@ -88,9 +75,7 @@ namespace Test.App.Views.Client
             {
                 //DialogResult.Text = "User cancelled the dialog";
             }
-        }
-
-        //public async Task GetAll()
+        }        
         private async void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             await ViewModel.GetAll();

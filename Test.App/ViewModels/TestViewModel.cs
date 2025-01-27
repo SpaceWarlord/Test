@@ -57,25 +57,7 @@ namespace Test.App.ViewModels
         /// </summary>
 
         [ObservableProperty]
-        private string _nickname;
-
-        /// <summary>
-        /// Saves client data that has been edited.
-        /// </summary>
-
-        public async Task SaveAsync()
-        {
-            /*
-            Debug.WriteLine("Called Save Async. Name: " + FirstName);
-            IsModified = false;
-            if (IsNew)
-            {
-                Debug.WriteLine("its new");
-                IsNew = false;                
-            }
-            await App.Repository.Clients.UpsertAsync(_model);            
-            */
-        }
+        private string _nickname;        
 
 #nullable enable        
 

@@ -12,13 +12,7 @@ namespace Test.App.Services
 {
     public class ClientService
     {
-        private readonly TestDBContext _db;
-        /*
-        public ClientService(TestDBContext db)
-        {
-            _db = db;
-        }
-        */
+        private readonly TestDBContext _db;        
         public ClientService()
         {
             _db = new TestDBContext();
@@ -44,7 +38,7 @@ namespace Test.App.Services
             var found = await _db.Clients.FirstOrDefaultAsync(x => x.Id == client.Id);
             if (found is not null)
             {
-                Debug.WriteLine("Client already exists with Id: " + client.Id);
+                Debug.WriteLine("Error: Client already exists with Id: " + client.Id);
                 return false;
             }
             var c = new Client()

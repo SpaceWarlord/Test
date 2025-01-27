@@ -31,15 +31,7 @@ namespace Test.App.Views.Client
         {
             this.InitializeComponent();
 
-            ClientPageVM = clientPageVM;
-            Debug.WriteLine("HOLAAA");
-            //ClientVM = new ClientViewModel("", "", "", "", "", "", "", "", null, 0, "");
-            /*
-            ClientVM.FullName = string.Empty;
-            ClientVM.Gender = "M";
-            ClientVM.GenderPreference = string.Empty;
-            ClientVM.Phone = "555555";
-            */
+            ClientPageVM = clientPageVM;                        
         }
 
         private void gender_SelectionChanged(object sender, SelectionChangedEventArgs e)

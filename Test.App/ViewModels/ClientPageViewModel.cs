@@ -27,24 +27,20 @@ namespace Test.App.ViewModels
         
         public ClientPageViewModel()
         { 
-            Debug.WriteLine("-- ClientPageViewModel Constructor--");
-            //Clients = new ObservableCollection<ClientViewModel>();
+            Debug.WriteLine("-- ClientPageViewModel Constructor--");            
             NewClient = new ClientViewModel(new Guid().ToString(), "", "", "", "", "", "", "", "", null, 0, "");
-            ClientService = new ClientService();
-            
-            
-
-            /*
-            ClientViewModelFactory clientFactory = new ClientViewModelFactory(new ClientService());
-            NewClient = clientFactory.Create();            
-            */
-            
+            ClientService = new ClientService();                                               
         }
 
+
+        /// <summary>
+        /// Gets all the clients 
+        /// </summary>
+        /// 
         public async Task GetAll()
         {
             List<ClientDTO> clientDTOList = await ClientService.GetAll();
-            Debug.WriteLine("total clients found " + clientDTOList.Count);
+            Debug.WriteLine("Total clients found: " + clientDTOList.Count);
             /*
             List<TestViewModel> tList = TestViewModel.ToViewModelList(testDTOList);
             Tests = new ObservableCollection<TestViewModel>(tList as List<TestViewModel>);
@@ -56,65 +52,7 @@ namespace Test.App.ViewModels
                 Debug.WriteLine("Adding: " + clientDTO.Id + " name: " + clientDTO.FirstName);
                 Clients.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email, 
                     clientDTO.HighlightColor, clientDTO.Address, clientDTO.RiskCategory, clientDTO.genderPreference));
-            }
-            Debug.WriteLine("total clients in list after:" + Clients.Count);
-        }
-
-        /// <summary>
-        /// Saves user to database then clears fields 
-        /// </summary>
-        /// 
-        /*
-        public async Task AddClientToDB()
-        {
-            Debug.WriteLine("--AddClientToDb--");
-            await NewClient.SaveAsync();
-            //NewClient = new ClientViewModel("", "", "", "", "", "", "", "", null, 0, "");
-            ClientViewModelFactory clientFactory = new ClientViewModelFactory(new ClientService());
-            NewClient = clientFactory.Create();
-            await GetClientsListAsync();
-        }
-        */
-
-        /*
-        public async Task GetClientsListAsync()
-        {
-            Debug.WriteLine("-- Get Client List Async --");
-            await dispatcherQueue.EnqueueAsync(() =>
-            {
-                IsLoading = true;
-            });
-            var clients = await App.Repository.Clients.GetAsync();
-            if (clients == null)
-            {
-                Debug.WriteLine("clients was null");
-                return;
-            }
-            Debug.WriteLine("Total users:" + clients.Count());
-
-            await dispatcherQueue.EnqueueAsync(() =>
-            {
-                Clients.Clear();
-                ClientViewModelFactory clientFactory = new ClientViewModelFactory(new ClientService());
-                foreach (var c in clients)
-                {
-                    Debug.WriteLine("adding " + c.FullName);                    
-                    ClientViewModel clientViewModel = clientFactory.Create(c.Id, c.FirstName, c.LastName, c.Nickname, c.Gender, c.DOB, c.Phone, c.Email, c.HighlightColor, c.Address, c.RiskCategory, c.GenderPreference);
-                    //ClientViewModel clientViewModel = new ClientViewModel(c.FirstName, c.LastName, c.Nickname, c.Gender, c.DOB, c.Phone, c.Email, c.HighlightColor, c.Address, c.RiskCategory, c.GenderPreference);
-                    if (clientViewModel.FirstName != null)
-                    {
-                        Debug.WriteLine("Not null: Id" + clientViewModel.Id + " name: " + clientViewModel.FullName);
-                        Clients.Add(clientViewModel);
-                        //People.Add(userViewModel);
-                    }
-                    else
-                    {
-                        Debug.WriteLine("Was null");
-                    }
-                }
-                IsLoading = false;
-            });
-        }     
-        */
+            }            
+        }        
     }
 }

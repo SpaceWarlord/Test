@@ -15,17 +15,11 @@ namespace Test.App.DTO
         public string LastName { get; set; }
         public string Nickname { get; set; }
         public string Gender {  get; set; }
-
-        public string? Dob { get; set; }
-        
+        public string? Dob { get; set; }        
         public string? Phone { get; set; }
-
         public string? Email { get; set; }
-
         public string? HighlightColor { get; set; }
-
-        public Address? Address { get; set; }
-        
+        public Address? Address { get; set; }        
         public byte RiskCategory {  get; set; }
         public string? genderPreference {  get; set; }
 
@@ -44,17 +38,6 @@ namespace Test.App.DTO
             HighlightColor = highlightColor;
             Address = address;
             RiskCategory = riskCategory;
-        }
-
-        /*
-        public ClientDTO(int id, string firstName, string lastName, string nickname, string gender)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Nickname = nickname;
-            Gender = gender;
-        }
-        */
+        }        
     }
 }

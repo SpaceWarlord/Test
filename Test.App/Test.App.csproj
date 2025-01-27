@@ -72,6 +72,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Test.Models\Test.Models.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Factories\" />
+  </ItemGroup>
 
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution

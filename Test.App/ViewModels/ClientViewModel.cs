@@ -21,23 +21,7 @@ namespace Test.App.ViewModels
 {
     public partial class ClientViewModel: PersonViewModel
     {
-        public readonly ClientService ClientService;
-
-        private string _testText="";
-        public string TestText
-        {
-            get => _testText;
-            set
-            {
-                if (value != _testText)
-                {
-                    _testText = value;
-                    IsModified = true;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
+        public readonly ClientService ClientService;       
 
         /// <summary>
         /// Gets or sets the client's risk category.
@@ -54,36 +38,9 @@ namespace Test.App.ViewModels
 
         [ObservableProperty]
         private string? _genderPreference;
+        
 
-
-        /// <summary>
-        /// Saves client data that has been edited.
-        /// </summary>
-
-        public async Task SaveAsync()
-        {
-            /*
-            Debug.WriteLine("Called Save Async. Name: " + FirstName);
-            IsModified = false;
-            if (IsNew)
-            {
-                Debug.WriteLine("its new");
-                IsNew = false;                
-            }
-            await App.Repository.Clients.UpsertAsync(_model);            
-            */
-        }
-
-#nullable enable
-        /*
-        private readonly ClientService _clientService;
-        public ClientViewModel(ClientService clientService, string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, Address? address, byte riskCategory, string? genderPreference)
-            : base(id, firstName, lastName, nickname, gender, dob, phone, email, highlightColor, address)
-        {
-            _clientService = clientService;
-        }        
-        */
-
+#nullable enable       
         
         public ClientViewModel(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, Address? address, byte riskCategory, string? genderPreference) 
             : base(id, firstName, lastName, nickname, gender, dob, phone, email, highlightColor, address)

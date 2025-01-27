@@ -49,8 +49,7 @@ namespace Test.App
 
         /// <summary>
         /// Pipeline for interacting with backend service or database.
-        /// </summary>
-        //public static ITestRepository Repository { get; private set; }
+        /// </summary>        
 
         public IServiceProvider Services { get; }
 
@@ -112,18 +111,8 @@ namespace Test.App
         /// Configures the app to use the Sqlite data source. If no existing Sqlite database exists,         
         /// </summary>
         public static void UseSqlite()
-        {
-            string demoDatabasePath = Package.Current.InstalledLocation.Path + @"\Data\Roster1.db";
-            string databasePath = ApplicationData.Current.LocalFolder.Path + @"\Roster1.db";
-
-
-            if (!File.Exists(databasePath))
-            {
-                //File.Copy(demoDatabasePath, databasePath);
-            }
-            //var dbOptions = new DbContextOptionsBuilder<RosterContext>().UseSqlite("Data Source=" + databasePath);
-            var dbOptions = new DbContextOptionsBuilder<TestDBContext>().UseSqlite("Data Source=" + "database.db");
-            //Repository = new SqlTestRepository(dbOptions);
+        {                    
+            var dbOptions = new DbContextOptionsBuilder<TestDBContext>().UseSqlite("Data Source=" + "database.db");            
         }
 
         /// <summary>
@@ -132,10 +121,7 @@ namespace Test.App
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            Application.Current.DispatcherShutdownMode = DispatcherShutdownMode.OnLastWindowClose;
-
-
-            //string path = AppDomain.CurrentDomain.BaseDirectory;
+            Application.Current.DispatcherShutdownMode = DispatcherShutdownMode.OnLastWindowClose;           
             UseSqlite();
             CheckForFirstTimeRun();
             Window mainWindow = (Application.Current as App)?.MainWindow as Shell;
