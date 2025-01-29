@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Networking;
 using Test.App.Services;
-using Test.App.Factories;
 using Test.App.DTO;
 using System.Collections;
 

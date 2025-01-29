@@ -118,7 +118,7 @@ namespace Test.App.ViewModels
 
 
         [ObservableProperty]
-        private Address? _address;
+        private AddressViewModel? _address;
 
         public PersonViewModel() : base()
         {
@@ -153,7 +153,7 @@ namespace Test.App.ViewModels
             }
         }
 
-        public PersonViewModel(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, Address? address) : base()
+        public PersonViewModel(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, AddressViewModel? address) : base()
         {
             Debug.WriteLine("--PersonViewModel Constructor 1--");
             Id = id;

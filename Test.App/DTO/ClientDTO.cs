@@ -19,13 +19,13 @@ namespace Test.App.DTO
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? HighlightColor { get; set; }
-        public Address? Address { get; set; }        
+        public AddressDTO? Address { get; set; }        
         public byte RiskCategory {  get; set; }
         public string? genderPreference {  get; set; }
 
 
         //[SetsRequiredMembers]
-        public ClientDTO(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, Address? address, byte riskCategory, string? genderPreference)
+        public ClientDTO(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, AddressDTO? address, byte riskCategory, string? genderPreference)
         {
             Id = id;
             FirstName = firstName;

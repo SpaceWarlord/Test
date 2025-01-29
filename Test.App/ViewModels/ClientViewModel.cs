@@ -42,7 +42,7 @@ namespace Test.App.ViewModels
 
 #nullable enable       
         
-        public ClientViewModel(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, Address? address, byte riskCategory, string? genderPreference) 
+        public ClientViewModel(string id, string firstName, string lastName, string nickname, string gender, string? dob, string? phone, string? email, string? highlightColor, AddressViewModel? address, byte riskCategory, string? genderPreference) 
             : base(id, firstName, lastName, nickname, gender, dob, phone, email, highlightColor, address)
         {
             Debug.WriteLine("-- ClientViewModel Constructor--");
@@ -75,7 +75,7 @@ namespace Test.App.ViewModels
         
         public ClientDTO ToDTO()
         {
-            return new ClientDTO(Id, FirstName, LastName, Nickname, Gender, Dob, Phone, Email, HighlightColor, Address, RiskCategory, GenderPreference);
+            return new ClientDTO(Id, FirstName, LastName, Nickname, Gender, Dob, Phone, Email, HighlightColor, Address.ToDTO(), RiskCategory, GenderPreference);
         }
 
         public static List<ClientViewModel> ToViewModelList(List<ClientDTO> clientDTOList)
@@ -84,7 +84,7 @@ namespace Test.App.ViewModels
             foreach(ClientDTO clientDTO in clientDTOList)
             {
                 viewModelList.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email, 
-                    clientDTO.HighlightColor, clientDTO.Address, clientDTO.RiskCategory, clientDTO.genderPreference));
+                    clientDTO.HighlightColor, new AddressViewModel(clientDTO.Address.Id, clientDTO.Address.Name, clientDTO.Address.UnitNum, clientDTO.Address.StreetNum, clientDTO.Address.StreetName, clientDTO.Address.StreetType, clientDTO.Address.Suburb), clientDTO.RiskCategory, clientDTO.genderPreference));
             }
             return viewModelList;
         }

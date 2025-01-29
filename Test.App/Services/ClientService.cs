@@ -19,7 +19,8 @@ namespace Test.App.Services
         }
         public async Task<List<ClientDTO>> GetAll()
         {
-            return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Nickname, c.Gender, c.DOB, c.Phone, c.Email, c.HighlightColor, c.Address, c.RiskCategory, c.GenderPreference)).ToListAsync();            
+            return await _db.Clients.Select(c => new ClientDTO(c.Id, c.FirstName, c.LastName, c.Nickname, c.Gender, c.DOB, c.Phone, c.Email, c.HighlightColor, 
+                new AddressDTO(c.Address.Id, c.Address.Name, c.Address.UnitNum, c.Address.StreetNum, c.Address.StreetName, c.Address.StreetType, c.Address.SuburbId), c.RiskCategory, c.GenderPreference)).ToListAsync();            
         }
 
         public async Task<bool> Update(ClientDTO client)
@@ -41,6 +42,15 @@ namespace Test.App.Services
                 Debug.WriteLine("Error: Client already exists with Id: " + client.Id);
                 return false;
             }
+            var a = new Address()
+            {
+                Id = client.Address.Id,
+                UnitNum = client.Address.UnitNum,
+                StreetNum = client.Address.StreetNum,
+                StreetName = client.Address.StreetName,
+                StreetType = client.Address.StreetType,
+                SuburbId = client.Address.Suburb
+            };
             var c = new Client()
             {
                 Id = client.Id,
@@ -52,7 +62,7 @@ namespace Test.App.Services
                 Phone = client.Phone,
                 Email = client.Email,
                 HighlightColor = client.HighlightColor,
-                Address = client.Address,
+                Address = a,
                 RiskCategory = client.RiskCategory,
                 GenderPreference = client.genderPreference
             };

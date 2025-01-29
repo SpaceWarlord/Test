@@ -13,7 +13,7 @@ namespace Test.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int AddressId { get; protected set; }
+        public string Id { get; set; }
         
         public string Name { get; set; }
 
@@ -27,7 +27,7 @@ namespace Test.Models
         
         public string StreetType { get; set; }
 
-        public int SuburbId {  get; set; }
+        public string SuburbId {  get; set; }
         
         public Suburb Suburb { get; set; }
         

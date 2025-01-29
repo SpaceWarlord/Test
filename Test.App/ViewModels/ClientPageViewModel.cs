@@ -11,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Networking;
 using Test.App.Services;
-using Test.App.Factories;
 using Test.App.DTO;
 using System.Collections;
 using static System.Net.Mime.MediaTypeNames;
@@ -51,7 +50,7 @@ namespace Test.App.ViewModels
             {
                 Debug.WriteLine("Adding: " + clientDTO.Id + " name: " + clientDTO.FirstName);
                 Clients.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email, 
-                    clientDTO.HighlightColor, clientDTO.Address, clientDTO.RiskCategory, clientDTO.genderPreference));
+                    clientDTO.HighlightColor, new AddressViewModel(clientDTO.Address.Id, clientDTO.Address.Name, clientDTO.Address.UnitNum, clientDTO.Address.StreetNum, clientDTO.Address.StreetName, clientDTO.Address.StreetType, clientDTO.Address.Suburb), clientDTO.RiskCategory, clientDTO.genderPreference));
             }            
         }        
     }

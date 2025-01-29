@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:Test.App.Views.Client"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:usercontrols="using:Test.App.UserControls"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
     <ContentDialog.Resources />
@@ -16,6 +17,14 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -58,6 +67,10 @@
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Nickname"
             Text="{x:Bind ClientPageVM.NewClient.Nickname, Mode=TwoWay}" />
+        <usercontrols:AddressControl
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="2" />
 
         <StackPanel
             Grid.Row="7"
