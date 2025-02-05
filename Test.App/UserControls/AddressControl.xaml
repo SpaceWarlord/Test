@@ -29,8 +29,9 @@
             HorizontalAlignment="Center"
             FontSize="15"
             Text="Address" />
+        <!--
         <TextBox
-            x:Name="AddressName"
+            x:Name="AddressNameTextBox"
             Grid.Row="1"
             Grid.Column="0"
             Header="Address Name"
@@ -39,7 +40,7 @@
             PlaceholderText="Enter Address Name"
             Text="{x:Bind AddressVM.Name, Mode=TwoWay}" />
         <TextBox
-            x:Name="UnitNum"
+            x:Name="UnitNumTextBox"
             Grid.Row="2"
             Grid.Column="0"
             Header="Unit Number"
@@ -47,26 +48,29 @@
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Unit Number"
             Text="{x:Bind AddressVM.UnitNum, Mode=TwoWay}" />
+        -->
         <TextBox
-            x:Name="StreetNum"
+            x:Name="StreetNumTextBox"
             Grid.Row="3"
             Grid.Column="0"
             Header="Street Number"
             IsColorFontEnabled="True"
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Street Number"
-            Text="{x:Bind AddressVM.StreetNum, Mode=TwoWay}" />
+            Text="{x:Bind StreetNum, Mode=TwoWay}" />
+
         <TextBox
-            x:Name="StreetName"
+            x:Name="StreetNameTextBox"
             Grid.Row="4"
             Grid.Column="0"
             Header="Street Name"
             IsColorFontEnabled="True"
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Street Name"
-            Text="{x:Bind AddressVM.StreetName, Mode=TwoWay}" />
+            Text="{x:Bind ViewModel.StreetName, Mode=TwoWay}" />
+        <!--
         <TextBox
-            x:Name="StreetType"
+            x:Name="StreetTypeTextBox"
             Grid.Row="5"
             Grid.Column="0"
             Header="Street Type"
@@ -75,7 +79,7 @@
             PlaceholderText="Enter Street Type"
             Text="{x:Bind AddressVM.StreetType, Mode=TwoWay}" />
         <TextBox
-            x:Name="Suburb"
+            x:Name="SuburbTextBox"
             Grid.Row="6"
             Grid.Column="0"
             Header="Suburb"
@@ -83,5 +87,6 @@
             PlaceholderForeground="Gray"
             PlaceholderText="Enter Suburb"
             Text="{x:Bind AddressVM.Suburb, Mode=TwoWay}" />
+        -->
     </Grid>
 </UserControl>

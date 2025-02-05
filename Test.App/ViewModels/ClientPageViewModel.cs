@@ -26,8 +26,9 @@ namespace Test.App.ViewModels
         
         public ClientPageViewModel()
         { 
-            Debug.WriteLine("-- ClientPageViewModel Constructor--");            
-            NewClient = new ClientViewModel(new Guid().ToString(), "", "", "", "", "", "", "", "", null, 0, "");
+            Debug.WriteLine("-- ClientPageViewModel Constructor--");
+            AddressViewModel addressVM = new AddressViewModel("", "", "", "", "", "", "");
+            NewClient = new ClientViewModel(new Guid().ToString(), "", "", "", "", "", "", "", "", addressVM, 0, "");
             ClientService = new ClientService();                                               
         }
 
@@ -49,8 +50,16 @@ namespace Test.App.ViewModels
             foreach (ClientDTO clientDTO in clientDTOList)
             {
                 Debug.WriteLine("Adding: " + clientDTO.Id + " name: " + clientDTO.FirstName);
-                Clients.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email, 
+                if (clientDTO.Address != null)
+                {
+                    Clients.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email,
                     clientDTO.HighlightColor, new AddressViewModel(clientDTO.Address.Id, clientDTO.Address.Name, clientDTO.Address.UnitNum, clientDTO.Address.StreetNum, clientDTO.Address.StreetName, clientDTO.Address.StreetType, clientDTO.Address.Suburb), clientDTO.RiskCategory, clientDTO.genderPreference));
+                }
+                else
+                {
+                    Clients.Add(new ClientViewModel(clientDTO.Id, clientDTO.FirstName, clientDTO.LastName, clientDTO.Nickname, clientDTO.Gender, clientDTO.Dob, clientDTO.Phone, clientDTO.Email,
+                    clientDTO.HighlightColor, null, clientDTO.RiskCategory, clientDTO.genderPreference));
+                }
             }            
         }        
     }

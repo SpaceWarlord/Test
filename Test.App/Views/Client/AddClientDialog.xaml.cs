@@ -31,7 +31,8 @@ namespace Test.App.Views.Client
         {
             this.InitializeComponent();
 
-            ClientPageVM = clientPageVM;                        
+            ClientPageVM = clientPageVM;
+            ClientPageVM.NewClient.Address.StreetName = "Larry";
         }
 
         private void gender_SelectionChanged(object sender, SelectionChangedEventArgs e)

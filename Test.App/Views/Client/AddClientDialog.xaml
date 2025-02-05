@@ -70,7 +70,9 @@
         <usercontrols:AddressControl
             Grid.Row="4"
             Grid.Column="0"
-            Grid.ColumnSpan="2" />
+            Grid.ColumnSpan="2"
+            StreetNum="{x:Bind ClientPageVM.NewClient.Address.StreetNum, Mode=TwoWay}"
+            ViewModel="{x:Bind ClientPageVM.NewClient.Address, Mode=TwoWay}" />
 
         <StackPanel
             Grid.Row="7"

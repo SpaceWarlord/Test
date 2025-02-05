@@ -21,12 +21,31 @@ namespace Test.App.UserControls
 {
     public sealed partial class AddressControl : UserControl
     {
-        public AddressViewModel AddressVM { get; set; }
+        public static readonly DependencyProperty StreetNumProperty =
+        DependencyProperty.Register(nameof(StreetNum), typeof(string), typeof(AddressControl), new PropertyMetadata(null));
+
+        public static readonly DependencyProperty ViewModelProperty =
+        DependencyProperty.Register(nameof(StreetNum), typeof(AddressViewModel), typeof(AddressControl), new PropertyMetadata(null));
+
+        public string StreetNum
+        {
+            get { return (string)GetValue(StreetNumProperty); }
+            set { SetValue(StreetNumProperty, value); }
+        }
+
+        public AddressViewModel ViewModel
+        {
+            get { return (AddressViewModel)GetValue(ViewModelProperty); }
+            set { SetValue(ViewModelProperty, value); }
+        }
+
+        //public AddressViewModel AddressVM { get; set; }
+        //public ClientViewModel ClientViewModel { get; set; }
         public AddressControl()
         {
             this.InitializeComponent();
-            
-            //AddressVM = new AddressViewModel();
+            //ClientViewModel = new ClientViewModel("", "", "", "", "", "", "", "", "", null, 0,"");
+            //AddressVM = new AddressViewModel("","","","","","","");
         }
     }
 }
